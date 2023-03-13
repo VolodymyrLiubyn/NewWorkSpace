@@ -3,10 +3,9 @@ function isEqual (a, b) {
     const c = JSON.stringify(a);
     const d = JSON.stringify(b);
 
-    if  ( c === d) {
-       console.log ('true');
-    } else {
-   console.log ('false') };
+   let result = c === d ? true : false;
+   
+   return result;
 
 }
 const data = { a: 1, b: 1 };
