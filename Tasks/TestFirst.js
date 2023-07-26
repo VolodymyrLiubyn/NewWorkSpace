@@ -4,27 +4,25 @@ let p2 = "aey";
 
 const stringChecker = function (s, p1, p2) {
     
-    const first = s.split('');
-    const second = p1.split('');
-    const third = p2.split('');
-    if (first.length !== (second.length + third.length)) {
+    const phrase = s.split('');
+    const firstPartOfPhrase = p1.split('');
+    const secondPartOfPhrase = p2.split('');
+    if (phrase.length !== (firstPartOfPhrase.length + secondPartOfPhrase.length)) {
         return false
     }
     
-    const differenceA = first.filter(num => !second.includes(num))
-    
-    const differenceB = first.filter(num => !third.includes(num))
+    let phrase2 = [];
 
-    const h = differenceA.join ('');
-    const k = differenceB.join ('');
+    for (let i = 0; i < phrase.length; i++) {
+
+        phrase[i] === firstPartOfPhrase[0] ? phrase2.push(firstPartOfPhrase[0]) : phrase2.push(secondPartOfPhrase[0])
+               
+        phrase[i] === firstPartOfPhrase[0] ? firstPartOfPhrase.shift(0) : secondPartOfPhrase.shift(0)
+    }
     
-        if (h !== p2 ) {
-            return false
-        }
-        
-        if (k === p1 ) {
-            return true       
-        }
+    if (phrase.join ('') === phrase2.join ('') ) {
+        return true
+    }     
     
     return false;
 
