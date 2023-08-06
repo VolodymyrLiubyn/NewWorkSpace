@@ -79,3 +79,5 @@ const archivedTableArr = [
     }
 
 ]
+
+export default Tables;

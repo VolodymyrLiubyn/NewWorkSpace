@@ -76,3 +76,5 @@ const summaryActivedColumn = function () {
     console.log (summaryActivedQuote.length)
 
 }
+
+export default methods;
