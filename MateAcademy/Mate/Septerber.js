@@ -300,7 +300,13 @@ function getRatio(colors) {
 // console.log(getRatio('abcdefghijklm'));
 
 function romanToInt(romanNum) {
-   
+
+    const validationRow = 'IVXLCDM'
+    for (const num of romanNum) {
+        if (!validationRow.includes(num)) {
+            return NaN
+        }
+    }
     const romanianObject = {
         IV: 4,
         IX: 9,
@@ -317,6 +323,27 @@ function romanToInt(romanNum) {
         I: 1,
         X: 10,
         C: 100,
+    };
+        if (romanNum.includes('XXXX')
+    || romanNum.includes('IIII')
+    || romanNum.includes('CCCC')
+    || romanNum.includes('IVI')
+    || romanNum.includes('IXI')
+    || romanNum.includes('LXL')
+    || romanNum.includes('XCX')
+    || romanNum.includes('CDC')
+    || romanNum.includes('CMC')
+    || romanNum.includes('IIV')
+    || romanNum.includes('IIX')
+    || romanNum.includes('XXL')
+    || romanNum.includes('XXC')
+    || romanNum.includes('CCD')
+    || romanNum.includes('CCM')
+    || romanNum.includes('IXV')
+    || romanNum.includes('XCL')
+    || romanNum.includes('CMD')
+    ) {
+        return NaN
     }
     let romanString = romanNum;
     let number = 0;
@@ -335,26 +362,15 @@ function romanToInt(romanNum) {
             romanString = romanString.slice(1)
         }
     }
-    if (verificationArray[3] === 1) {
-        return NaN;
-    }
-
     for (let j = 0; j < verificationArray.length; j++){
-        if (verificationArray[j] === 4 
-            && verificationArray[j] !== verificationArray[0]){
-        return NaN;
-        }
-        if (verificationArray[j] >= verificationArray[j + 1] 
-            && verificationArray[j] > 1 
-            && verificationArray[j] < 1000) {
+        if (verificationArray[j] > verificationArray[j + 1]) {
         return NaN
         }
     }
-    
-return number
 
+return number
 }
-// console.log(romanToInt('MMMCMIV'));
+// console.log(romanToInt('XXXIV'));
 
 function calculateYears(principal, interest, tax, desired) {
     // write code here
@@ -374,6 +390,54 @@ function calculateYears(principal, interest, tax, desired) {
     return years;
   }
   
-console.log(calculateYears(1000, 0.01625, 0.18, 1200));
+// console.log(calculateYears(1000, 0.01625, 0.18, 1200));
+
+function encodeDuplicates(word) {
+    // write code here
+    let copyWord = word.toLowerCase();
+    let yxRow = '';
+
+    const partCounter = {};
+  
+    for (const letter of copyWord) {
+      if (!partCounter[letter]) {
+        partCounter[letter] = 0;
+      }
+      partCounter[letter]++;
+    }
+
+    for (const part of copyWord) {
+        if (partCounter[part] === 1) {
+            yxRow += 'x'
+        } else {
+            yxRow += 'y'
+        }
+    }
+
+    return yxRow
+    
+  }
+
+//   console.log(encodeDuplicates('mmmma'));
+
+function mumble(letters) {
+  const smallLetters = letters.toLowerCase();
+  const lettersArray = (smallLetters.split(''));
+  const arrayLength = [];
+
+  for (let i = 0; i < lettersArray.length; i++) {
+    while (lettersArray[i].length < i + 1) {
+      lettersArray[i] += lettersArray[i][0];
+    }
+
+    arrayLength.push(lettersArray[i][0].toUpperCase()
+    + lettersArray[i].slice(1));
+  }
+
+  return arrayLength.join('-');
+}
+
+// console.log(mumble('Abc'));
+
 
 
