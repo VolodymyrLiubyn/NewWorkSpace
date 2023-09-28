@@ -116,25 +116,26 @@ function calculateGuests(guestsInput) {
     let numberGuest = '';
   
     for (const num of guestsInput) {
-      if (Number(num) > 0) {
+      if (Number(num) >= 0) {
         numberGuest = numberGuest + num;
       }
     }
-  
-    if (numberGuest.length === 0) {
-      return 'not a number';
-    }
-  
+
     for (let i = numberGuest.length; i > 0; i--) {
       if (guestsInput.includes(numberGuest) === false) {
         numberGuest = numberGuest.slice(0, i);
       }
     }
-  
+
+    if (numberGuest.length === 0 || +numberGuest < 1) {
+      return 'not a number';
+    }
+    
     return +numberGuest;
+
   }
  
-//   console.log(calculateGuests('Hello, 9 people'));
+  // console.log(calculateGuests('12.34 people'));
 
 function isAlphabet(letters) {
     // write code here
@@ -375,4 +376,4 @@ const compareRobots = (robot1, robot2) => {
     return true;
   };
 
-console.log(compareRobots(charlie, lordy));
+// console.log(compareRobots(charlie, lordy));
