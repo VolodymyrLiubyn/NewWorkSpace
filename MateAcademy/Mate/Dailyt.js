@@ -7,7 +7,8 @@ function isPalindrome(str) {
   
     for (const part of parts) {
       if (part.toLowerCase() !== part.toUpperCase()
-      || Number(part) > 0 ) {
+      || Number(part) > 0 
+      || part === '0') {
         firstString = firstString + part;
         secondString = part + secondString;
       }
@@ -17,7 +18,7 @@ function isPalindrome(str) {
     
   }
 
-// console.log(isPalindrome('f12  345,4! 321F '))
+// console.log(isPalindrome('f102  345,4! 3201F '))
 
 function generateSequence(num, pattern) {
     const summaryArray = [];
