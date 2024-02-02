@@ -268,6 +268,22 @@ function getWinner(knightPosition, bishopPosition) {
   return 'None';
 }
 
-console.log(getWinner(knightPosition, bishopPosition));
+// console.log(getWinner(knightPosition, bishopPosition));
+
+function isToday(date) {
+  let now = new Date();
+  if ((now.getFullYear() + now.getMonth() + now.getDate())
+  === (date.getFullYear() + date.getMonth() + date.getDate())) {
+    return true;
+  }
+
+  return false;
+}
+
+
+
+function switchLights(lights, n) {
+
+}
 
 

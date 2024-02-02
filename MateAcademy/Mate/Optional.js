@@ -1,23 +1,3 @@
-// let count = 0;
-
-// function MagicFunction(...param) {
-//   const magicArray = [];
-//   for(const element of param) {
-//     if (typeof(element) !== 'number') {
-//       magicArray.push(0);
-//     } else {
-//     magicArray.push(+element)
-//     }
-//   }
-//   magicArray.forEach((item) => {
-//     count += item;
-//   })
-
-//   return count;
-// }
-
-// console.log(MagicFunction(2, -1, 5));
-
 
 function getLongestChain(word) {
   const smallLetters = 'aeiou';
@@ -296,6 +276,94 @@ function calculateCost(bucket, products) {
 }
 
 // console.log(calculateCost(bucket, products));
+
+let magicCount = 0;
+
+function makeInfinityAdder(...param) {
+
+  for(const element of param) {
+    if (+element) {
+      numCount += +element;
+    }
+  }
+
+  makeInfinityAdder.toString = function() {
+    return numCount;
+  };
+
+  
+  return makeInfinityAdder;
+}
+
+// console.log(MagicFunction(1)(2, 3)(3));
+// console.log(MagicFunction(1)(2, 3)(3));
+// console.log(magicCount)
+
+
+function getFirstBadVersion(checkVersion, currentVersion) {
+  // write code here
+  let wrongVersion = currentVersion;
+
+  while (checkVersion(wrongVersion)) {
+    wrongVersion--;
+  }
+
+  return wrongVersion + 1;
+}
+
+const checkVersion = v => v >= 30
+
+// console.log(getFirstBadVersion(checkVersion, 34));
+
+function numberToTitle(num) {
+  const convertArray = ['A', 'B', 'C', 'D', 'E', 'F',
+    'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+    'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  const stringArray = [num];
+  const letterLength = 26;
+  let divNumber = num;
+  const wrightArray = [];
+
+  while (divNumber > letterLength) {
+    if ((divNumber - letterLength) < 1) {
+      stringArray.unshift(0);
+    } else if (Math.floor(divNumber / letterLength)
+    === (divNumber / letterLength)) {
+      stringArray.unshift((divNumber / letterLength) - 1);
+      divNumber = Math.floor(divNumber / letterLength - 1);
+    } else {
+      stringArray.unshift(Math.floor(divNumber / letterLength));
+      divNumber = Math.floor(divNumber / letterLength);
+    }
+  }
+
+  if (convertArray[stringArray[0]] === 0) {
+    wrightArray.push(convertArray[convertArray.length - 1]);
+  } else {
+    wrightArray.push(convertArray[stringArray[0] - 1]);
+  }
+
+  for (let i = 1; i < stringArray.length; i++) {
+    wrightArray.push(convertArray[(stringArray[i]
+    - stringArray[i - 1] * letterLength) - 1]);
+  }
+
+  let stringLetter = '';
+
+  for (const letter of wrightArray) {
+    if (letter) {
+      stringLetter += letter;
+    }
+  }
+
+  return stringLetter;
+}
+
+console.log(numberToTitle(18278))
+console.log(numberToTitle(123456))
+console.log(numberToTitle(702))
+console.log(numberToTitle(53))
+
 
 
 

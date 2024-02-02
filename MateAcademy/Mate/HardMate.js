@@ -83,4 +83,3 @@ function getAverageAge(ages) {
 
 // console.log(getAverageAge(ages));
 
-

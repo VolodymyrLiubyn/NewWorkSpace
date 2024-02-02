@@ -178,3 +178,79 @@ function compareRobots(firstRobotResults, secondRobotResults) {
 
 // console.log(compareRobots([9, 7, 9], [1, 3, 4, 5, 12]));
   
+
+const robot = {
+    wheels: 4,
+    name: 'roberto',
+    serialNumber: 123,
+    coords: {
+      x: 0,
+      y: 0,
+    },
+    weight: 40,
+  }
+  
+  function omitMethod() {
+    /**
+     * @param {string[]} keys
+     *
+     * @returns {Object}
+     */
+    Object.prototype.omit = function omit(keys) {
+      // write code here
+      const omitObject = { ...this };
+      const delArray = [...keys];
+  
+      for (const key of delArray) {
+        delete omitObject[key];
+      }
+  
+      return omitObject;
+    };
+  };
+  omitMethod()
+
+  const result = robot.omit(['coords', 'wheels', 'weight']);
+//console.log(result);
+//console.log(robot);
+
+const words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
+
+
+function groupByMethod() {
+    /**
+     * @param {function} callback
+     *
+     * @returns {Object}
+     */
+    Array.prototype.groupBy = function(callback = x => x) {
+        const resultObject = {};
+
+        for (const element of this) {
+            if (callback(element) in resultObject) {
+                resultObject[callback(element)].push(element)
+            } else {
+                resultObject[callback(element)] = [element];
+            }
+        }
+
+        return resultObject;
+    };
+  }
+  groupByMethod();
+
+const bob = { type: 'cleaner', name: 'bob' };
+const paul = { type: 'cargo', name: 'paul' };
+const robert = { type: 'cleaner', name: 'robert' };
+
+const robots = [bob, paul, robert];
+const groupedRobots = robots.groupBy(robot => robot.type);
+
+const numbers = [1, 1, 2, 1, 3, 3, 2, 4];
+const groupedNumbers = numbers.groupBy()
+const grouppedWords = words.groupBy(word => word.length);
+// console.log(groupedNumbers);
+// console.log(grouppedWords);
+// console.log(groupedRobots);
+
+

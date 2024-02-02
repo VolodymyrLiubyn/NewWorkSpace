@@ -263,38 +263,6 @@ function formatKey(key, k) {
 
 // console.log( formatKey('5F3Z-2e-9-w', 4));
 
-// numbers.pop = function() {
-//   // write code here
-//   const numbers = this;
-
-//   if (numbers.length === 0) {
-//     return undefined;
-//   }
-
-//   let remove;
-
-//   for (let i = 0; i < numbers.length; i++) {
-//     remove = numbers[i];
-//   }
-//   numbers.length -= 1;
-
-//   return remove;
-// };
-
-// numbers.pop = function() {
-//   if (this.length === 0) {
-//     // No need to remove elements
-//     return;
-//   }
-
-//   // Save the last element to return it later
-//   const removedElement = this[this.length - 1];
-
-//   // Shorten an array (old last element is not available any more)
-//   this.length -= 1;
-
-//   return removedElement;
-// };
 
 function sumInRow(n) {
   // write code here
