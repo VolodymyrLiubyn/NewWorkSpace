@@ -936,56 +936,43 @@ function countAndSay(n) {
 
 // console.log(countAndSay(6));
 
-
-
-
-
-
-
 function adviseBefore(target, advice) {
 
-  function wrapper(...elements) {
-    const result = advice(elements);
-    // console.log(result)
-    // console.log(elements)
+  function wrapper(...items) {
+    const result = advice(...items);
 
     if (Array.isArray(result)) {
-      return target(result);
+      return target(...result);
     }
 
 
-    return target(elements);
+    return target(...items);
   };
-
-  return wrapper;
+  return wrapper
 }
 
-const target = function(arr) {
-  return arr.map(x => x * 2);
-};
-
-const advice = function(...args) {
-  return [args]
-};
-
-const result = adviseBefore(target, advice)(1, 2, 3) //=== [2, 4, 6]
-
-// const target = function(...letters) {
-//   const reversed = letters.reverse().join('');
-
-//   return reversed;
+// const target = function(arr) {
+//   return arr.map(x => x * 2);
 // };
 
-// const advice = function(...letters) {
-//   return letters.join('');
+// const advice = function(...args) {
+//   return [args]
 // };
 
-// const result = adviseBefore(target, advice)('a', 'b', 'c', 'd', 'e')
-
+// const result = adviseBefore(target, advice)(1, 2, 3) //=== [2, 4, 6]
 // console.log(result);
 
-// console.log(advice(['a', 'b', 'c', 'd', 'e']))
-// console.log(target('a', 'b', 'c', 'd', 'e'))
+const target = function(...letters) {
+  const reversed = letters.reverse().join('');
 
+  return reversed;
+};
 
+const advice = function(...letters) {
+  return letters.join('');
+};
+
+const result = adviseBefore(target, advice)('a', 'b', 'c', 'd', 'e')
+
+console.log(result);
 

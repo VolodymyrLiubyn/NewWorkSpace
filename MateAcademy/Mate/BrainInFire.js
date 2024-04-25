@@ -51,6 +51,7 @@ function getComplementaryColor(hexColor) {
   const hexColorArray = (hexColor.toUpperCase()).split('');
 
   for (const item of hexColorArray) {
+    
     if (!hexArray.includes(item)) {
       throw new Error();
     }
